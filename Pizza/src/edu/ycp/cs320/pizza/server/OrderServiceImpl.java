@@ -3,7 +3,7 @@ package edu.ycp.cs320.pizza.server;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import edu.ycp.cs320.pizza.client.OrderService;
-import edu.ycp.cs320.pizza.client.Pizza;
+import edu.ycp.cs320.pizza.client.PizzaApp;
 
 public class OrderServiceImpl extends RemoteServiceServlet implements OrderService {
 	private static final long serialVersionUID = 1L;
@@ -15,7 +15,7 @@ public class OrderServiceImpl extends RemoteServiceServlet implements OrderServi
 	}
 	
 	@Override
-	public Boolean placeOrder(Pizza pizza, String customerName,
+	public Boolean placeOrder(PizzaApp pizza, String customerName,
 			String customerAddress) {
 		System.out.println("Pizza order received!");
 		

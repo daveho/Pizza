@@ -6,7 +6,7 @@ public interface OrderServiceAsync {
 
 	void hello(String message, AsyncCallback<Boolean> callback);
 
-	void placeOrder(Pizza pizza, String customerName, String customerAddress,
+	void placeOrder(PizzaApp pizza, String customerName, String customerAddress,
 			AsyncCallback<Boolean> callback);
 
 }

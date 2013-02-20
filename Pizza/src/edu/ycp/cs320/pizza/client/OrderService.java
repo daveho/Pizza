@@ -17,5 +17,5 @@ public interface OrderService extends RemoteService {
 	 * @param pizza the pizza to be ordered
 	 * @return true if successful, false otherwise
 	 */
-	public Boolean placeOrder(Pizza pizza, String customerName, String customerAddress);
+	public Boolean placeOrder(PizzaApp pizza, String customerName, String customerAddress);
 }
