@@ -8,12 +8,15 @@ import com.google.gwt.user.client.ui.ListBox;
 
 import edu.ycp.cs320.pizza.shared.Pizza;
 import edu.ycp.cs320.pizza.shared.Size;
+import com.google.gwt.user.client.ui.Button;
 
 public class PizzaView extends Composite {
 	private Pizza model;
 	private InlineLabel sizeLabel;
 	private InlineLabel toppingsLabel;
 	private ListBox sizeComboBox;
+	private ListBox availToppingsList;
+	private ListBox selectedToppingsList;
 	
 	public PizzaView() {
 		
@@ -34,6 +37,30 @@ public class PizzaView extends Composite {
 		layoutPanel.add(sizeComboBox);
 		layoutPanel.setWidgetLeftWidth(sizeComboBox, 139.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(sizeComboBox, 49.0, Unit.PX, 26.0, Unit.PX);
+		
+		selectedToppingsList = new ListBox();
+		layoutPanel.add(selectedToppingsList);
+		layoutPanel.setWidgetLeftWidth(selectedToppingsList, 139.0, Unit.PX, 61.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(selectedToppingsList, 120.0, Unit.PX, 85.0, Unit.PX);
+		selectedToppingsList.setVisibleItemCount(5);
+		
+		availToppingsList = new ListBox();
+		layoutPanel.add(availToppingsList);
+		layoutPanel.setWidgetLeftWidth(availToppingsList, 366.0, Unit.PX, 61.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(availToppingsList, 120.0, Unit.PX, 85.0, Unit.PX);
+		availToppingsList.setVisibleItemCount(5);
+		
+		Button addToppingButton = new Button("New button");
+		addToppingButton.setText("<< Add");
+		layoutPanel.add(addToppingButton);
+		layoutPanel.setWidgetLeftWidth(addToppingButton, 206.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(addToppingButton, 119.0, Unit.PX, 27.0, Unit.PX);
+		
+		Button removeToppingButton = new Button("New button");
+		removeToppingButton.setText("Remove >>");
+		layoutPanel.add(removeToppingButton);
+		layoutPanel.setWidgetLeftWidth(removeToppingButton, 206.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(removeToppingButton, 165.0, Unit.PX, 27.0, Unit.PX);
 	}
 	
 	public void setModel(Pizza model) {
@@ -52,5 +79,6 @@ public class PizzaView extends Composite {
 		// Set pizza's current size in the combo box
 		Size pizzaSize = model.getSize();
 		sizeComboBox.setSelectedIndex(pizzaSize.ordinal());
+		
 	}
 }
