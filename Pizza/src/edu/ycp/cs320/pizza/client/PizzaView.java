@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.ListBox;
 
 import edu.ycp.cs320.pizza.shared.Pizza;
 import edu.ycp.cs320.pizza.shared.Size;
+import edu.ycp.cs320.pizza.shared.Topping;
+
 import com.google.gwt.user.client.ui.Button;
 
 public class PizzaView extends Composite {
@@ -80,5 +82,16 @@ public class PizzaView extends Composite {
 		Size pizzaSize = model.getSize();
 		sizeComboBox.setSelectedIndex(pizzaSize.ordinal());
 		
+		// Clear list boxes
+		selectedToppingsList.clear();
+		availToppingsList.clear();
+		
+		for (Topping topping : Topping.values()) {
+			if (model.getToppingList().contains(topping)) {
+				selectedToppingsList.addItem(topping.toString());
+			} else {
+				availToppingsList.addItem(topping.toString());
+			}
+		}
 	}
 }
