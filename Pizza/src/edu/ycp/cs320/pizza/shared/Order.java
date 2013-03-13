@@ -2,7 +2,11 @@ package edu.ycp.cs320.pizza.shared;
 
 import java.math.BigDecimal;
 
-public class Order implements ISubscriber {
+public class Order extends Publisher implements ISubscriber {
+	public enum Events {
+		PRICE_CHANGED,
+	}
+	
 	private Pizza pizza;
 	private String user;
 	private BigDecimal price;
@@ -32,6 +36,7 @@ public class Order implements ISubscriber {
 	
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+		notifySubscribers(Events.PRICE_CHANGED, price);
 	}
 	
 	public BigDecimal getPrice() {
@@ -42,6 +47,6 @@ public class Order implements ISubscriber {
 	public void eventOccurred(Object key, IPublisher publisher, Object hint) {
 		// The pizza changed!
 		PizzaPriceController controller = new PizzaPriceController();
-		price = controller.calcPrice(pizza);
+		setPrice(controller.calcPrice(pizza));
 	}
 }

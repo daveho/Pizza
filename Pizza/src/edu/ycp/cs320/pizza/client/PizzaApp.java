@@ -44,6 +44,7 @@ public class PizzaApp implements EntryPoint {
 		order.setPrice(new BigDecimal("0.00"));
 		
 		orderView.setModel(order);
+		orderView.update();
 		
 		panel.add(orderView);
 		

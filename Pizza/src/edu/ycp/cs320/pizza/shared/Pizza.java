@@ -1,9 +1,11 @@
 package edu.ycp.cs320.pizza.shared;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pizza extends Publisher {
+@SuppressWarnings("serial")
+public class Pizza extends Publisher implements Serializable {
 	public enum Events {
 		ADD_TOPPING,
 		REMOVE_TOPPING,
@@ -11,7 +13,7 @@ public class Pizza extends Publisher {
 	}
 	
 	private Size size;
-	private List<Topping> toppingList;
+	private ArrayList<Topping> toppingList;
 	
 	public Pizza() {
 		this.size = Size.MEDIUM;
